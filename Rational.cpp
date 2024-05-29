@@ -33,6 +33,13 @@ void Rational::satify(Rational& r)
 		}
 }
 
+int Rational::get_numer()
+{
+	return this->numer;
+}
+
+
+
 Rational& Rational::operator=(const Rational& r)
 {
 	this->denom = r.denom;
@@ -103,6 +110,18 @@ Rational Rational::operator-(const Rational& r)
 	return res -= r;
 }
 
+
+Rational Rational::powR(const int degree)
+{
+	numer = pow(numer, degree);
+	denom = pow(denom, degree);
+
+	satify(*this);
+
+	return *this;
+}
+
+
 Rational Rational::operator++()
 {
 	this->numer += this->denom;
@@ -128,15 +147,6 @@ bool Rational::operator!=(Rational& r)
 	return !(*this == r);
 }
 
-Rational::operator int()
-{
-	return this->numer / this->denom;
-}
-
-Rational::operator double()
-{
-	return ((double)this->numer) / this->denom;
-}
 
 istream& operator>>(istream& in, Rational& r)
 {

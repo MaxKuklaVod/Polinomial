@@ -14,7 +14,8 @@ Rational Polynomial::evaluate(Rational x) const
 {
     Rational result(0);
     for (int i = 0; i <= degree; i++) {
-        result += Rational(coefficients[i]) * x.powR(i);
+        Rational step = x;
+        result += Rational(coefficients[i]) * step.powR(i);
     }
     return result;
 }
@@ -110,7 +111,7 @@ Polynomial Polynomial::integrate()
 ostream& operator<<(ostream& out, Polynomial& polynomial)
 {
     for (int i = polynomial.degree; i >= 0; i--) {
-        if (polynomial.coefficients[i] != Rational(int(0))) {
+        if (polynomial.coefficients[i].get_numer() != 0) {
             if (i == 1) {
                 out << polynomial.coefficients[i] << "x";
             }
