@@ -1,4 +1,5 @@
 #pragma once
+#include "Rational.h"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -6,13 +7,13 @@ using namespace std;
 class Polynomial {
 private:
     int degree; // Степень многочлена
-    vector<double> coefficients; // Массив коэффициентов
+    vector<Rational> coefficients; // Массив коэффициентов
 public:
     // Конструктор
-    Polynomial(int degree, const vector<double>& coefficients);
+    Polynomial(int degree, vector<Rational>& coefficients);
 
     // Метод для вычисления значения многочлена для заданного аргумента
-    double evaluate(double x) const;
+    Rational evaluate(Rational x) const;
 
     // Операция сложения
     Polynomial operator +(const Polynomial& other) const;
@@ -21,7 +22,7 @@ public:
     Polynomial operator -(const Polynomial& other) const;
 
     // Операция умножения
-    Polynomial operator *(const Polynomial& other) const;
+    Polynomial operator *(Polynomial& other);
 
     // Операция деления (не придумал как это осуществить в программе)
     Polynomial operator /(const Polynomial& other) const;
@@ -30,8 +31,8 @@ public:
     Polynomial derivative(int order = 1) const;
 
     // Операция интегрирования
-    Polynomial integrate() const;
+    Polynomial integrate();
 
     // Метод для вывода многочлена в стандартный поток вывода
-    friend ostream& operator<<(ostream& out, const Polynomial& polynomial);
+    friend ostream& operator<<(ostream& out, Polynomial& polynomial);
 };

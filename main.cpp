@@ -1,15 +1,21 @@
-﻿#include "Polinomial.h"
+﻿//#include "Polinomial.h"
+#include "Rational.h"
 #include <iostream>
 #include <vector>
+using namespace std;
 
 int main() {
 
     setlocale(LC_ALL, "RU");
 
-    vector<double> coeffs1 = { 1, -2, 3, 4 };
+    Rational p1(1, 4);
+
+    cout << p1 << " \n";
+
+    /*vector<Rational> coeffs1 = { Rational(1), Rational(-2), Rational(1), Rational(4) };
     Polynomial p1(3, coeffs1);
 
-    vector<double> coeffs2 = { 2, 1, -1 };
+    vector<Rational> coeffs2 = { Rational(2), Rational(1), Rational(-1) };
     Polynomial p2(2, coeffs2);
 
     cout << "Многочлен p1: " << p1 << endl;
@@ -35,7 +41,7 @@ int main() {
     Polynomial p8 = p1 / p2;
     cout << "p1 / p2 = " << p8 << endl;
 
-    return 0;
+    return 0;*/
 }
 
 //Класс Polynomial:
